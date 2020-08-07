@@ -1,0 +1,53 @@
+<div class="container" style="margin: 30px;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h1>Search</h1>
+
+        <input id="col-md-4" type='text' [(ngModel)]="filterTerm" style="margin-right: 10px;" />
+
+
+        <button type="button" class="btn btn-sm btn-success" (click)="search()">search</button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="searchedMatches.length">
+    <!-- card starts -->
+    <div class="card" style="width: 18rem;" *ngFor="let match of allMatches; let i = index"
+      style="margin-bottom: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">{{ match.team1}} v/s {{match.team2}}</h5>
+        <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+        <p class="card-text">match coming on {{ match.date }}</p>
+        <a *ngIf="!match.isRecommended" (click)="recommend(i)" style="cursor: pointer;" class="card-link">Recommend
+          Match</a>
+        <a *ngIf="match.isRecommended" (click)="recommend(i)" style="cursor: pointer;" class="card-link">Unrecommend
+          Match</a>
+
+      </div>
+    </div>
+    <!-- card ends -->
+  </div>
+
+
+</div>
+
+<hr>
+
+<div *ngIf="recommendList.length" class="container" style="margin: 30px;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h1>Reccommended matches</h1>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let match of recommendList">
+            {{ match.team1}} v/s {{match.team2}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

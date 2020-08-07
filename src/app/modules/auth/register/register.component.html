@@ -1,0 +1,52 @@
+<div class="loginform">
+  <div class="jumbotron">
+
+    <form id="jumbotron.btn" name="form" [formGroup]="registerForm">
+
+      <h2>Register</h2>
+      <!-- User Name  -->
+      <div class="form-group"
+        [ngClass]="{ 'has-error': !registerForm.get('userName').valid && registerForm.get('userName').dirty }">
+        <input id="username" formControlName="userName" type="text" placeholder="User Name" class="form-control"
+          name="username" />
+        <div *ngIf="!registerForm.get('userName').valid && registerForm.get('userName').dirty" class="help-block">
+          Username is required</div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group"
+        [ngClass]="{ 'has-error': !registerForm.get('password').valid && registerForm.get('password').dirty }">
+        <input formControlName="password" id="pass" type="password" placeholder="Password" class="form-control"
+          name="password" />
+        <div *ngIf="!registerForm.get('password').valid && registerForm.get('password').dirty" class="help-block">
+          Password is required</div>
+      </div>
+      <!-- First Name -->
+      <div class="form-group"
+        [ngClass]="{ 'has-error': !registerForm.get('firstName').valid && registerForm.get('firstName').dirty }">
+        <input formControlName="firstName" id="fname" type="text" placeholder="First Name" class="form-control"
+          name="firstname" />
+        <div *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').dirty" class="help-block">
+          First
+          Name is required</div>
+      </div>
+      <!-- Last Name -->
+      <div class="form-group"
+        [ngClass]="{ 'has-error': !registerForm.get('lastName').valid && registerForm.get('lastName').dirty }">
+        <input formControlName="lastName" id="lname" type="text" placeholder="Last Name" class="form-control"
+          name="lastname" />
+        <div *ngIf="!registerForm.get('lastName').valid && registerForm.get('lastName').dirty" class="help-block">Last
+          Name is required</div>
+      </div>
+      <!-- IS Admin -->
+      <div style="text-align:left ">
+        Is Admin
+        <input id="isadmin" formControlName="isAdmin" type="checkbox" class="form" name="isadmin" />
+      </div>
+      <br />
+      <button [disabled]="registerForm.invalid" class="btn btn-primary" (click)="register()">Register</button>
+      <a id="back" style="margin-left:10px" [routerLink]="['/auth']">Cancel</a>
+
+    </form>
+  </div>
+</div>

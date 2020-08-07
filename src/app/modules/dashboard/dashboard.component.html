@@ -2,8 +2,46 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="jumbotron">
-        <h1>C Match</h1>
-        <p>Coordinate and find matches</p>
+        <h1>Upcoming matches</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">date</th>
+              <th scope="col">team-1</th>
+              <th scope="col">team-2</th>
+              <th scope="col">toss winner team</th>
+              <th scope="col">type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let match of upcomingMatches">
+              <td>{{ match.date }}</td>
+              <td>{{ match.team1 }}</td>
+              <td>{{ match.team2 }}</td>
+              <td>{{ match.tossWinner ? match.tossWinner : ' -'}}</td>
+              <td>{{ match.type }}</td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+        <!-- code for table ends -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="container" style="margin: 30px;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h1>old matches</h1>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let match of oldMatches">
+            {{ match.description }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>

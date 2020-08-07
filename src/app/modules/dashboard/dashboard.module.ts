@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { MatchService } from 'src/app/services/match/match.service';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent }
+  { path: '', component: DashboardComponent },
+  { path: 'krishna', component: DashboardComponent },
 ]
 
 @NgModule({
@@ -13,7 +16,11 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
+  ],
+  providers: [
+    MatchService
   ]
 })
 export class DashboardModule { }

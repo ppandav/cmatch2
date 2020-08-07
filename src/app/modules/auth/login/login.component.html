@@ -1,18 +1,25 @@
-<div class="container" style="margin: 30px;">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="jumbotron">
-        <h1>login</h1>
-        <h3>user name : <span>
-            <input type="text">
-          </span>
-        </h3>
-        <h3>password : <span>
-            <input type="text">
-          </span></h3>
+<div class="jumbotron">
+  <form [formGroup]="loginForm">
 
-        <button (click)="login()" type="button" class="btn btn-lg btn-success">Submit</button>
-      </div>
+    <h2>Login</h2>
+    <!-- User Name  -->
+    <div class="form-group"
+      [ngClass]="{ 'has-error': !loginForm.get('userName').valid && loginForm.get('userName').dirty }">
+      <input formControlName="userName" id="form-user" type="text" placeholder="User Name" class="form-control"
+        name="username">
+      <div *ngIf="!loginForm.get('userName').valid && loginForm.get('userName').dirty" class="help-block">Username is
+        required</div>
     </div>
-  </div>
+    <!-- Password -->
+    <div class="form-group"
+      [ngClass]="{ 'has-error': !loginForm.get('userName').valid && loginForm.get('userName').dirty }">
+      <input formControlName="password" id="form-pass" type="password" placeholder="Password" class="form-control"
+        name="password">
+      <div *ngIf="!loginForm.get('password').valid && loginForm.get('password').dirty" class="help-block">Password is
+        required</div>
+    </div>
+    <button [disabled]="loginForm.invalid" id="jumbotron.btn" class="btn btn-primary" (click)="login()">Log In</button>
+    <a id="register-btn" style="margin-left:10px" [routerLink]="['/auth/register']">Register</a>
+
+  </form>
 </div>
