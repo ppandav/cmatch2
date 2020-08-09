@@ -16,15 +16,17 @@
 
   <div *ngIf="searchedMatches.length">
     <!-- card starts -->
-    <div class="card" style="width: 18rem;" *ngFor="let match of allMatches; let i = index"
+    <div class="card" style="width: 18rem;" *ngFor="let match of searchedMatches; let i = index"
       style="margin-bottom: 10px;">
       <div class="card-body">
         <h5 class="card-title">{{ match.team1}} v/s {{match.team2}}</h5>
         <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-        <p class="card-text">match coming on {{ match.date }}</p>
-        <a *ngIf="!match.isRecommended" (click)="recommend(i)" style="cursor: pointer;" class="card-link">Recommend
+        <p class="card-text">match coming on {{ matchService.utcToLocal(match.date, 'DD-MM-YYYY') }}</p>
+        <a *ngIf="!match.isRecommended" (click)="recommend(i,match.date)" style="cursor: pointer;"
+          class="card-link">Recommend
           Match</a>
-        <a *ngIf="match.isRecommended" (click)="recommend(i)" style="cursor: pointer;" class="card-link">Unrecommend
+        <a *ngIf="match.isRecommended" (click)="recommend(i,match.date)" style="cursor: pointer;"
+          class="card-link">Unrecommend
           Match</a>
 
       </div>
@@ -44,7 +46,7 @@
         <h1>Reccommended matches</h1>
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let match of recommendList">
-            {{ match.team1}} v/s {{match.team2}}
+            {{ match.team1}} v/s {{match.team2}} , {{ matchService.utcToLocal(match.date, 'DD-MM-YYYY') }}
           </li>
         </ul>
       </div>

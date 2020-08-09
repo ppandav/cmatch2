@@ -15,7 +15,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let match of upcomingMatches">
-              <td>{{ match.date }}</td>
+              <td>{{ matchService.utcToLocal(match.date, 'DD-MM-YYYY') }}</td>
               <td>{{ match.team1 }}</td>
               <td>{{ match.team2 }}</td>
               <td>{{ match.tossWinner ? match.tossWinner : ' -'}}</td>

@@ -37,7 +37,7 @@ export class MatchesComponent implements OnInit {
 
     )
     if (!this.searchedMatches.length) {
-      alert('no matches found');
+      this.matchService.showSnackbar('no matches found', null, 3000);
     }
     console.log('searched match : ', this.searchedMatches);
   }
@@ -55,18 +55,27 @@ export class MatchesComponent implements OnInit {
           isRecommended: false
         })
       });
-
       console.log('these are upcoming matches - ', this.allMatches);
     });
   }
 
-  recommend(index) {
+  recommend(index, matchDate) {
     console.log(index);
-    this.recommendList.push(this.allMatches[index]);
-  }
+    // check for duplicate recommendation
+    // if (this.searchedMatches[index] === this.recommendList.find(item => item.date === matchDate)) {
+    //   alert('item already recommended');
+    //   return;
+    // }
 
-  toggleRecommended(index) {
-    this.allMatches[index].isRecommended = true;
+    if (this.searchedMatches[index].isRecommended) {
+      this.searchedMatches[index].isRecommended = false
+      this.recommendList.splice(this.recommendList.findIndex(item => item.date === matchDate), 1);
+      this.matchService.showSnackbar('match removed from recommendation list', null, 2000);
+    } else {
+      this.searchedMatches[index].isRecommended = true;
+      this.matchService.showSnackbar('match added to recommendation list', null, 2000);
+      this.recommendList.push(this.allMatches[index]);
+    }
   }
 
 }

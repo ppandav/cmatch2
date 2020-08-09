@@ -1,0 +1,89 @@
+<!-- <div class="container" style="margin: 30px;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+
+        <div class="group-gap">
+
+
+          <div class="avatar-upload">
+            <div class="avatar-edit">
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                (change)="onFileSelect($event)" />
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row custom-wrapper">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div class="jumbotron" style="margin-top: 20px;">
+        <!-- Form starts -->
+
+        <div class="group-gap">
+
+          <!-- Upload image -->
+          <div class="avatar-upload">
+            <div class="avatar-edit">
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                (change)="onFileSelect($event)" />
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <button style="margin-left: 25px; margin-top: 15px;" type="submit" class="btn btn-sm btn-success"
+              (click)="fileInput.click()">change profile
+              picture</button>
+          </div>
+        </div>
+
+        <hr>
+        <form [formGroup]="changePasswordForm">
+
+          <h2>change password</h2>
+          <!-- old password  -->
+          <div class="form-group"
+            [ngClass]="{ 'has-error': !changePasswordForm.get('oldPassword').valid && changePasswordForm.get('oldPassword').dirty }">
+            <input formControlName="oldPassword" id="form-user" type="text" placeholder="old password"
+              class="form-control">
+            <div *ngIf="!changePasswordForm.get('oldPassword').valid && changePasswordForm.get('oldPassword').dirty"
+              class="help-block">old password is required</div>
+          </div>
+          <!-- Password -->
+          <div class="form-group"
+            [ngClass]="{ 'has-error': !changePasswordForm.get('newPassword').valid && changePasswordForm.get('newPassword').dirty }">
+            <input formControlName="newPassword" id="form-pass" type="password" placeholder="Password"
+              class="form-control" name="password">
+            <div *ngIf="!changePasswordForm.get('newPassword').valid && changePasswordForm.get('newPassword').dirty"
+              class="help-block">new password is required</div>
+          </div>
+          <button [disabled]="changePasswordForm.invalid" id="jumbotron.btn" class="btn btn-primary"
+            (click)="changePassword()">change password</button>
+
+
+        </form>
+
+
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
