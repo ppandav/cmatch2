@@ -6,6 +6,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [],
@@ -16,7 +21,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatMenuModule,
+    MatDialogModule,
+    FlexLayoutModule
   ],
   exports: [
     CommonModule,
@@ -25,7 +34,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatMenuModule,
+    MatDialogModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule { }

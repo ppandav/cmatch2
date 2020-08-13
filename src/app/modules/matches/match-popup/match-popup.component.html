@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{ data?.team1 }} v/s {{data?.team2}}</h1>
+<h3>Type: {{ data?.matchType }}</h3>
+<h4>Toss Winner: {{ data?.tossWinner }}</h4>
+
+<div mat-dialog-content>
+  <p>date: {{ matchService.utcToLocal(data.matchDate, 'DD-MM-YYYY')}}</p>
+  <p>time: {{ matchService.utcToLocal(data.matchDate, 'HH:mm')}}</p>
+  <h5>Winner: {{ data?.winner ? data.winner : '-' }}</h5>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="close()">Close</button>
+</div>

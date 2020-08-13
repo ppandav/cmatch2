@@ -13,6 +13,14 @@
           Username is required</div>
       </div>
 
+      <!-- email  -->
+      <div class="form-group"
+        [ngClass]="{ 'has-error': !registerForm.get('email').valid && registerForm.get('email').dirty }">
+        <input id="email" formControlName="email" type="text" placeholder="email" class="form-control" name="email" />
+        <div *ngIf="!registerForm.get('email').valid && registerForm.get('email').dirty" class="help-block">
+          email is required</div>
+      </div>
+
       <!-- Password -->
       <div class="form-group"
         [ngClass]="{ 'has-error': !registerForm.get('password').valid && registerForm.get('password').dirty }">

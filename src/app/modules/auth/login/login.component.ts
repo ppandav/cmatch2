@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     // this.router.navigate(['/dashboard'])
     this.auth.login(this.loginForm.value)
       .subscribe((data: any) => {
-        this.matchService.showSnackbar('you have been loggen in successfully', null, 3000);
+        this.matchService.showSnackbar('you have been logged in successfully', null, 3000);
 
         localStorage.setItem('user', JSON.stringify(this.loginForm.value.username));
 

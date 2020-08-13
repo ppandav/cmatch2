@@ -20,6 +20,10 @@ export class MatchService {
     return this.http.get('https://cricapi.com/api/cricket?apikey=' + this.apikey);
   }
 
+  getMatchScore(matchId: number): Observable<any> {
+    return this.http.get('https://cricapi.com/api/cricketScore?apikey=' + this.apikey + '&unique_id=' + matchId);
+  }
+
   utcToLocal(utcDate: string, format: string) {
     // convert utc to local
     const stillUtc = moment.utc(utcDate).toDate();

@@ -1,0 +1,40 @@
+<div style="text-align: center; margin: 20px;">
+  <h2>Upcoming Matches</h2>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-top: 30px;">
+    <div class="md-padding" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+      <!-- code for card -->
+      <mat-card style="margin-bottom: 30px;" class="example-card" *ngFor="let match of upcomingMatches"
+        fxFlex="0 1 calc(33.3% - 32px)">
+        <mat-card-header>
+          <mat-card-title>{{ match.team1}} v/s {{match.team2}}</mat-card-title>
+          <mat-card-subtitle>Type: {{ match.matchType }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image
+          src="https://cdn3.vectorstock.com/i/1000x1000/83/32/fiery-ball-for-cricket-championship-with-vs-versus-vector-14478332.jpg"
+          alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            match coming on {{ matchService.utcToLocal(match.date, 'DD-MM-YYYY') }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button *ngIf="!favData" mat-mini-fab aria-label="Example icon-button with a heart icon"
+            (click)="addToFavourite(match)">
+            <mat-icon>favorite</mat-icon>
+          </button>
+
+          <button *ngIf="favData" mat-mini-fab aria-label="Example icon-button with a heart icon"
+            (click)="deleteFromFavourite(match)">
+            <i class="material-icons"> delete
+            </i>
+          </button> -->
+          <button class="view" mat-mini-fab color="primary" (click)="viewMatchDetails(match)">View</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
