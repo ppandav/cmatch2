@@ -9,6 +9,7 @@ import { MatchService } from '../../services/match/match.service';
 export class DashboardComponent implements OnInit {
 
   upcomingMatches = [];
+  isLoading = false;
   oldMatches;
   listFilter;
 
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnInit {
 
   getUpcomingMatches() {
     this.matchService.getUpcomingMatches().subscribe(data => {
+      this.isLoading = true;
       console.log('up data : ', data.matches);
       data.matches.forEach(item => {
         this.upcomingMatches.push({
@@ -32,14 +34,17 @@ export class DashboardComponent implements OnInit {
         })
       })
       console.log('these are upcoming matches - ', this.upcomingMatches);
+      this.isLoading = false;
     });
   }
 
   getOldMatches() {
     this.matchService.getOldMatches().subscribe(data => {
+      this.isLoading = true;
       this.oldMatches = data.data;
       console.log('these are old matches - ', data);
-    })
+    });
+    this.isLoading = false;
   }
 
   search() {

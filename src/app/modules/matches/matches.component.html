@@ -22,12 +22,19 @@
         <h5 class="card-title">{{ match.team1}} v/s {{match.team2}}</h5>
         <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
         <p class="card-text">match coming on {{ matchService.utcToLocal(match.date, 'DD-MM-YYYY') }}</p>
-        <a *ngIf="!match.isRecommended" (click)="recommend(i,match.date)" style="cursor: pointer;"
-          class="card-link">Recommend
-          Match</a>
+
+        <!-- <a *ngIf="!match.isRecommended" (click)="recommend(i,match.date)" style="cursor: pointer;" class="card-link">Add
+          To FavList</a> -->
+
+        <!-- trial -->
+        <button *ngIf="!match.isRecommended" (click)="recommend(i,match.date)" mat-icon-button color="warn"
+          aria-label="Example icon button with a heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <!-- trial ends -->
+
         <a *ngIf="match.isRecommended" (click)="recommend(i,match.date)" style="cursor: pointer;"
-          class="card-link">Unrecommend
-          Match</a>
+          class="card-link">Remove from fav</a>
 
       </div>
     </div>

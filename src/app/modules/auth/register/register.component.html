@@ -39,10 +39,10 @@
           Name is required</div>
       </div>
       <!-- IS Admin -->
-      <div style="text-align:left ">
+      <!-- <div style="text-align:left ">
         Is Admin
         <input id="isadmin" formControlName="isAdmin" type="checkbox" class="form" name="isadmin" />
-      </div>
+      </div> -->
       <br />
       <button [disabled]="registerForm.invalid" class="btn btn-primary" (click)="register()">Register</button>
       <a id="back" style="margin-left:10px" [routerLink]="['/auth']">Cancel</a>

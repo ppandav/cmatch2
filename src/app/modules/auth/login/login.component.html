@@ -4,15 +4,15 @@
     <h2>Login</h2>
     <!-- User Name  -->
     <div class="form-group"
-      [ngClass]="{ 'has-error': !loginForm.get('userName').valid && loginForm.get('userName').dirty }">
-      <input formControlName="userName" id="form-user" type="text" placeholder="User Name" class="form-control"
+      [ngClass]="{ 'has-error': !loginForm.get('username').valid && loginForm.get('username').dirty }">
+      <input formControlName="username" id="form-user" type="text" placeholder="User Name" class="form-control"
         name="username">
-      <div *ngIf="!loginForm.get('userName').valid && loginForm.get('userName').dirty" class="help-block">Username is
+      <div *ngIf="!loginForm.get('username').valid && loginForm.get('username').dirty" class="help-block">Username is
         required</div>
     </div>
     <!-- Password -->
     <div class="form-group"
-      [ngClass]="{ 'has-error': !loginForm.get('userName').valid && loginForm.get('userName').dirty }">
+      [ngClass]="{ 'has-error': !loginForm.get('password').valid && loginForm.get('password').dirty }">
       <input formControlName="password" id="form-pass" type="password" placeholder="Password" class="form-control"
         name="password">
       <div *ngIf="!loginForm.get('password').valid && loginForm.get('password').dirty" class="help-block">Password is

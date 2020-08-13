@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from '../../../services/auth/auth.service';
+import { MatchService } from 'src/app/services/match/match.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor() { }
+  constructor(private auth: AuthService, private matchService: MatchService, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -22,6 +24,21 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    const registerBody = {
+      username: this.registerForm.value.firstName + ' ' + this.registerForm.value.lastName,
+      email: this.registerForm.value.userName,
+      password: this.registerForm.value.password,
+      pfirstname: this.registerForm.value.firstName,
+      plastname: this.registerForm.value.lastName
+    }
+    this.auth.register(registerBody).subscribe(data => {
+      this.matchService.showSnackbar('user registered successfully', null, 3000);
+      this.router.navigate(['/auth']);
+    },
+      err => {
+        this.matchService.showSnackbar('user registered failed.plz try after sometime', null, 3000);
+        console.log('error in registering : ', err);
+      })
     console.log('demo: ', this.registerForm);
   }
 
