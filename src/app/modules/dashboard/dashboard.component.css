@@ -1,3 +1,14 @@
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: black;
   }
+.table{
+  background-color:rgb(70, 187, 233);
+}
+.jumbotron{
+  background-image: radial-gradient(brown, white);
+}
+.container{
+  background-image: url(../dashboard/photo1/cricket.jpg);
+  background-repeat:no-repeat;
+  background-size: 1700px 800px;
+}

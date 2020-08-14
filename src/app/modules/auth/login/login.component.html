@@ -1,25 +1,51 @@
-<div class="jumbotron">
-  <form [formGroup]="loginForm">
+<div class="back">
 
-    <h2>Login</h2>
-    <!-- User Name  -->
-    <div class="form-group"
-      [ngClass]="{ 'has-error': !loginForm.get('username').valid && loginForm.get('username').dirty }">
-      <input formControlName="username" id="form-user" type="text" placeholder="User Name" class="form-control"
-        name="username">
-      <div *ngIf="!loginForm.get('username').valid && loginForm.get('username').dirty" class="help-block">Username is
-        required</div>
+<div class="jumbotron">
+  <form class="form-horizontal" #loginform="ngForm" (ngSubmit)="login()">
+    <!--{{loginform.form.valid}}-->
+    <!--<small class="text-danger">{{msg}}</small>-->
+
+    <h1 class="text-center">Login</h1>
+    <div class="form-group">
+        <label for="username" class="cols-sm-2 control-label">Username</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="uName" id="username"  placeholder="Enter your Username"
+                    [(ngModel)]="user.userName" required #username = "ngModel" pattern="^[a-z0-9_-]{3,15}$"
+                    [class.is-invalid]="username.invalid && username.touched"/>  
+            </div>
+
+            <!--<small class="text-danger" [class.d-none]="emailId.valid || emailId.untouched">Username is required field</small>-->
+            <div *ngIf="username.errors && (username.invalid && username.touched)">
+                <small class="text-danger" *ngIf="username.errors.required">Username is required field</small>
+                <small class="text-danger" *ngIf="username.errors.pattern">Enter the valid Username</small>
+            </div>
+        </div>
     </div>
-    <!-- Password -->
-    <div class="form-group"
-      [ngClass]="{ 'has-error': !loginForm.get('password').valid && loginForm.get('password').dirty }">
-      <input formControlName="password" id="form-pass" type="password" placeholder="Password" class="form-control"
-        name="password">
-      <div *ngIf="!loginForm.get('password').valid && loginForm.get('password').dirty" class="help-block">Password is
-        required</div>
+
+    <div class="form-group">
+        <label for="password" class="cols-sm-2 control-label">Password</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input type="password" class="form-control" name="passWord" id="password"  placeholder="Enter your Password"
+                    [(ngModel)]="user.password" required #password = "ngModel" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+                    [class.is-invalid]="password.invalid && password.touched"/>
+            </div>
+            <!--<small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required field</small>-->
+            
+            <div *ngIf="password.errors && (username.invalid && password.touched)">
+                <small class="text-danger" *ngIf="password.errors.required">Password is required field</small>
+                <small class="text-danger" *ngIf="password.errors.pattern">Enter the valid Password</small>
+            </div>
+
+        </div>
     </div>
-    <button [disabled]="loginForm.invalid" id="jumbotron.btn" class="btn btn-primary" (click)="login()">Log In</button>
+
+    <button type = "submit" [disabled]="loginform.invalid" id="jumbotron.btn" class="btn btn-primary" >Log In</button>
     <a id="register-btn" style="margin-left:10px" [routerLink]="['/auth/register']">Register</a>
 
   </form>
+</div>
 </div>

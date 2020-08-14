@@ -1,0 +1,19 @@
+.back{
+    height: 600px;
+    background-color: rgb(78, 216, 124);
+    background-image: url(./photo/ball.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
+    
+  width: 100%;
+    
+}
+.jumbotron{
+  color:black;
+ 
+  background-image: linear-gradient(rgb(63, 97, 74), yellow);
+  height: 270px;
+  width: 20%;
+}

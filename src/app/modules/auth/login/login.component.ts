@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatchService } from 'src/app/services/match/match.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -10,24 +12,27 @@ import { MatchService } from 'src/app/services/match/match.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  //loginForm: FormGroup;
+
+  user = new User();
 
   constructor(private router: Router, private auth: AuthService, private matchService: MatchService) { }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-    })
+    //this.loginForm = new FormGroup({
+      //username: new FormControl(null, [Validators.required]),
+      //password: new FormControl(null, [Validators.required]),
+    //})
   }
 
-  login() {
+  login() 
+  {
     // this.router.navigate(['/dashboard'])
-    this.auth.login(this.loginForm.value)
-      .subscribe((data: any) => {
+    this.auth.login(this.user).subscribe((data: any) => 
+    {
         this.matchService.showSnackbar('you have been logged in successfully', null, 3000);
 
-        localStorage.setItem('user', JSON.stringify(this.loginForm.value.username));
+        localStorage.setItem('user', JSON.stringify(this.user.userName));
 
         localStorage.setItem('token', JSON.stringify(data.token));
 
@@ -37,7 +42,7 @@ export class LoginComponent implements OnInit {
         err => {
           this.matchService.showSnackbar('error while logging in,plz try again later', null, 3000);
         })
-    console.log('demo : ', this.loginForm);
+    console.log("Exception occured");
   }
 
 }
